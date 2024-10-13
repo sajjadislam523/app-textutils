@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Hamburger lines */
+.hamburger .line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Transform lines when menu is open */
+.hamburger.open .top {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open .middle {
+    opacity: 0;
+}
+
+.hamburger.open .bottom {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Smooth transition for mobile menu */
+.mobile-menu {
+    z-index: 40;
+    height: 100vh;
+    opacity: 0;
+    transform: translateY(-100%);
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Dark background with transparency */
+}
+
+/* When mobile menu is open */
+.mobile-menu.translate-y-0 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Menu item styles */
+.mobile-menu a {
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
