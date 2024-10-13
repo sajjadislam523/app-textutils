@@ -8,7 +8,7 @@ export default function Navbar(props) {
 
     return (
         <>
-            <nav className='container flex items-center justify-between py-4 mx-auto'>
+            <nav className='flex items-center justify-between py-4 md:px-11'>
                 <div className='px-8 md:px-0'>
                     <p className='text-2xl font-bold'>{props.title}</p>
                 </div>
