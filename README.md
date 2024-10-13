@@ -9,7 +9,7 @@ A simple React application that allows users to input text and perform basic tex
 - Responsive design using TailwindCSS.
 - Mobile-friendly navigation with a hamburger menu.
 - Smooth animations for buttons and transitions.
-- Shows word count character count.
+- Shows word count and character count.
 
 ## Getting Started
 

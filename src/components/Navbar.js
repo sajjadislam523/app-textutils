@@ -9,7 +9,7 @@ export default function Navbar(props) {
     return (
         <>
             <nav className='flex items-center justify-between py-4 md:px-11'>
-                <div className='px-8 md:px-0'>
+                <div className='px-4 md:px-0'>
                     <p className='text-2xl font-bold'>{props.title}</p>
                 </div>
 
@@ -54,7 +54,7 @@ export default function Navbar(props) {
                     <a href="/" className='w-full py-4 text-center transition duration-300 ease-in-out border-b border-gray-600 hover:bg-gray-800'>
                         {props.homeText}
                     </a>
-                    <a href="/" className='w-full py-4 text-center transition duration-300 ease-in-out border-b border-gray-600 hover:bg-gray-800'>
+                    <a href="About" className='w-full py-4 text-center transition duration-300 ease-in-out border-b border-gray-600 hover:bg-gray-800'>
                         {props.aboutText}
                     </a>
                     <a href="/" className='w-full py-4 text-center transition duration-300 ease-in-out hover:bg-gray-800'>

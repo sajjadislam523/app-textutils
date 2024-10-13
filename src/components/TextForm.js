@@ -18,8 +18,23 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
+    const handleClear = () => {
+        let clearText = '';
+        setText(clearText);
+    }
+
     const speak = () => {
         let msg = new SpeechSynthesisUtterance(text);
+
+        const voices = window.speechSynthesis.getVoices();
+
+        const selectedVoice = voices.find(voice => voice.name === "Microsoft Zira - English (United States)");
+
+        if (selectedVoice) {
+            msg.voice = selectedVoice;
+        }
+
+
         window.speechSynthesis.speak(msg);
 
         const toggle = document.getElementById('toggle')
@@ -34,6 +49,10 @@ export default function TextForm(props) {
         }
     }
 
+    window.speechSynthesis.onvoiceschanged = () => {
+        console.log(window.speechSynthesis.getVoices());
+    };
+
     const [text, setText] = useState('');
 
     return (
@@ -44,13 +63,10 @@ export default function TextForm(props) {
                     <textarea className='p-4 border-2 border-gray-300 focus:outline-none rounded-xl' placeholder='Enter text here' onChange={handleOnChange} value={text} id="myBox" rows="5" cols="50"></textarea>
                 </div>
                 <div className='flex flex-wrap items-center justify-center gap-4'>
-
-                    <button onClick={handleUpClick} className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Convert to Uppercase</button>
-
-                    <button onClick={handleLowClick} className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Convert to Lowercase</button>
-
-                    <button onClick={speak} id='toggle' className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Speak</button>
-
+                    <button onClick={handleUpClick} className="btn btn-xs sm:btn-sm md:btn-md btn-outline btn-primary">Uppercase</button>
+                    <button onClick={handleLowClick} className="btn btn-xs sm:btn-sm md:btn-md btn-outline btn-primary">Lowercase</button>
+                    <button onClick={speak} id='toggle' className="btn btn-xs sm:btn-sm md:btn-md btn-outline btn-accent">Speak</button>
+                    <button onClick={handleClear} className="btn btn-xs sm:btn-sm md:btn-md btn-outline btn-error">Clear</button>
                 </div>
             </div>
             <div className="py-4 px-8 md:px-0">
