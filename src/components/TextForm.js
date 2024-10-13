@@ -18,6 +18,22 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
+    const speak = () => {
+        let msg = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(msg);
+
+        const toggle = document.getElementById('toggle')
+        if (toggle.textContent === "Speak") {
+            toggle.innerHTML = "Stop";
+        }
+        else {
+            toggle.innerHTML = "Speak";
+            if (toggle.innerHTML === "Speak") {
+                window.speechSynthesis.cancel();
+            }
+        }
+    }
+
     const [text, setText] = useState('');
 
     return (
@@ -27,11 +43,13 @@ export default function TextForm(props) {
                     <h1 className='text-2xl font-bold'>{props.heading}</h1>
                     <textarea className='p-4 border-2 border-gray-300 focus:outline-none rounded-xl' placeholder='Enter text here' onChange={handleOnChange} value={text} id="myBox" rows="5" cols="50"></textarea>
                 </div>
-                <div className='flex items-center justify-center gap-4'>
+                <div className='flex flex-wrap items-center justify-center gap-4'>
 
                     <button onClick={handleUpClick} className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Convert to Uppercase</button>
 
                     <button onClick={handleLowClick} className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Convert to Lowercase</button>
+
+                    <button onClick={speak} id='toggle' className='p-4 md:text-lg font-bold transition-all duration-500 ease-in-out bg-gradient-to-r from-blue-300 to-blue-400 md:hover:text-xl hover:from-blue-400 hover:to-blue-500 hover:scale-105 hover:shadow-2xl hover:text-white rounded-xl'>Speak</button>
 
                 </div>
             </div>
@@ -39,7 +57,7 @@ export default function TextForm(props) {
                 <h1 className="text-2xl font-bold">Your text summary</h1>
                 <p>{text.trim().split(/\s+/).filter((word) => word.length > 0).length} words and {text.length} characters</p>
                 <p>{0.008 * text.trim().split(/\s+/).filter((word) => word.length > 0).length} Minutes to read.</p>
-                <h2 className='text-xl font-bold'>Preview!</h2>
+                <h2 className='text-xl py-4 font-bold'>Preview</h2>
                 <p>{text}</p>
             </div>
         </>

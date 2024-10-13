@@ -1,14 +1,15 @@
 # TextUtils
 
-A simple React application that allows users to input text and perform basic text transformations such as converting the text to uppercase. The project uses **TailwindCSS** for styling and responsive design.
+A simple React application that allows users to input text and perform basic text transformations such as converting the text to uppercase and lowercase. The project uses **TailwindCSS** for styling and responsive design.
 
 ## Features
 
 - Input text into a textarea.
-- Convert the input text to uppercase with the click of a button.
+- Convert the input text to uppercase or lowercase with the click of a button.
 - Responsive design using TailwindCSS.
 - Mobile-friendly navigation with a hamburger menu.
 - Smooth animations for buttons and transitions.
+- Shows word count character count.
 
 ## Getting Started
 
@@ -68,8 +69,9 @@ To run this project locally, follow these steps:
 
 1. Open the application in your browser (`http://localhost:3000`).
 2. Enter text in the input area.
-3. Click the "Convert to Uppercase" button to transform your text to uppercase.
-4. The converted text will appear in the textarea.
+3. Click the "Convert to Uppercase" or "Convert to Lowercase" button to transform your text to uppercase or lowercase.
+4. The converted text will appear in the textarea and in the preview section below textarea.
+5. It will show how many words and characters has been written in the textarea at the text summary section.
 
 ### Mobile Navigation
 
