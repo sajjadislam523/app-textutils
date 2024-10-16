@@ -5,22 +5,24 @@ export default function TextForm(props) {
 
         let upperText = text.toUpperCase();
         setText(upperText)
+        props.showAlert("Converted to Uppercase", "success");
     }
 
     const handleLowClick = () => {
 
         let lowerText = text.toLowerCase();
         setText(lowerText)
+        props.showAlert("Converted to Lowercase", "success");
     }
 
     const handleOnChange = (event) => {
-        // console.log("Change the state");
         setText(event.target.value);
     }
 
     const handleClear = () => {
         let clearText = '';
         setText(clearText);
+        props.showAlert("Message Cleared!", "warning");
     }
 
     const speak = () => {
@@ -69,11 +71,11 @@ export default function TextForm(props) {
                     <button onClick={handleClear} className="btn btn-xs sm:btn-sm md:btn-md btn-outline btn-error">Clear</button>
                 </div>
             </div>
-            <div className="py-4 px-8 md:px-0">
+            <div className="px-8 py-4 md:px-0">
                 <h1 className="text-2xl font-bold">Your text summary</h1>
                 <p>{text.trim().split(/\s+/).filter((word) => word.length > 0).length} words and {text.length} characters</p>
                 <p>{0.008 * text.trim().split(/\s+/).filter((word) => word.length > 0).length} Minutes to read.</p>
-                <h2 className='text-xl py-4 font-bold'>Preview</h2>
+                <h2 className='py-4 text-xl font-bold'>Preview</h2>
                 <p>{text}</p>
             </div>
         </>
